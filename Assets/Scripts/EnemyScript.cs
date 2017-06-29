@@ -18,14 +18,14 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] Transform sightEnd;
     [SerializeField] LayerMask detecting;
 
-    [SerializeField] Transform playerCheckStart;
-    [SerializeField] Transform playerCheckEnd;
-    [SerializeField] LayerMask detectingPlayer;
+    //[SerializeField] Transform playerCheckStart;
+    //[SerializeField] Transform playerCheckEnd;
+    //[SerializeField] LayerMask detectingPlayer;
 
     [SerializeField] bool collidingWall;
     [SerializeField] bool collidingPlayer;
 
-    [SerializeField] Transform target; // The enemy will follow this
+    //[SerializeField] Transform target; // The enemy will follow this
     [SerializeField] float maxDistDetection;
 
     [SerializeField] Transform groundCheck;
@@ -37,19 +37,19 @@ public class EnemyScript : MonoBehaviour
 
     private PlayerController player;
 
-    Animator anim;
+    //Animator anim;
 
     void Start()
     {
         currentHealth = maxHealth;
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     void Update()
     {
         //Move towards the player when he is in range
-        if (Vector2.Distance(transform.position, target.position) < maxDistDetection)
+        /*if (Vector2.Distance(transform.position, target.position) < maxDistDetection)
         {
             if (transform.position.x > target.position.x && facingRight == true)
             {
@@ -64,7 +64,7 @@ public class EnemyScript : MonoBehaviour
 
             transform.position = Vector3.MoveTowards(transform.position,
             new Vector3(target.position.x, transform.position.y, transform.position.z), 1f * Time.deltaTime);
-        }
+        }*/
 
         GetComponent<Rigidbody2D>().velocity = new Vector3(velocity, 0.0f, 0.0f);
 
@@ -79,7 +79,7 @@ public class EnemyScript : MonoBehaviour
         collidingWall = Physics2D.Linecast(sightStart.position, sightEnd.position, detecting);
 
         //Check if the monster walked into the player character
-        collidingPlayer = Physics2D.Linecast(playerCheckStart.position, playerCheckEnd.position, detectingPlayer);
+        //collidingPlayer = Physics2D.Linecast(playerCheckStart.position, playerCheckEnd.position, detectingPlayer);
 
         if (collidingWall)
         {
@@ -120,7 +120,7 @@ public class EnemyScript : MonoBehaviour
 
         //Draws a line showing where the player gets hit
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(playerCheckStart.position, playerCheckEnd.position);
+        //Gizmos.DrawLine(playerCheckStart.position, playerCheckEnd.position);
     }
 
     public void Damage(int damage)
@@ -133,7 +133,7 @@ public class EnemyScript : MonoBehaviour
     {
         //Ajouter son de mort ennemi
         velocity = 0.0f;
-        anim.SetBool("killed", true);
+        //anim.SetBool("killed", true);
         Destroy(this.gameObject, timeToDie);
         gameObject.tag = "Dead";
     }
