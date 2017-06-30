@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] string horizontalCtrl = "Horizontal";
     [SerializeField] string fireButton = "Fire1";
 
+    private bool playerHit = false; //Turns true if the player got hit
     private int maxHealth = 4;
     public int currentHealth; // Public because of the HudScript
 
@@ -101,5 +102,4 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dead");
         //SceneManager.LoadScene("DeathScreen");
     }
-
 }

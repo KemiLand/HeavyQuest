@@ -48,6 +48,7 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
+        //Might use for some ennemies
         //Move towards the player when he is in range
         /*if (Vector2.Distance(transform.position, target.position) < maxDistDetection)
         {
