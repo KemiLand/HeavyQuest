@@ -1,9 +1,8 @@
-﻿//Needs a way to jump from level to level
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour {
+public class WhipAttackScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

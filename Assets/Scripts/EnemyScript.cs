@@ -119,8 +119,9 @@ public class EnemyScript : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawLine(sightStart.position, sightEnd.position);
 
+        //Used if the enemy can spot the player
         //Draws a line showing where the player gets hit
-        Gizmos.color = Color.blue;
+        //Gizmos.color = Color.blue;
         //Gizmos.DrawLine(playerCheckStart.position, playerCheckEnd.position);
     }
 

@@ -1,13 +1,8 @@
 ﻿/*
- * TO DO : SEE HOW ANIMATIONS WORK WITH SPINE IN UNITY
- * MIGHT HAVE TO CHANGE ANIMATORS
- * 
- * INPUTS DON'T NEED 2 PLAYERS NOW (MIGHT DO COOP LATER)
- * ADD INCONTROL
  * ATTACK SYSTEM
- * POINTS (MAYBE IN A MANAGER SCRIPT)
  */
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour
@@ -26,18 +21,22 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] string jumpButton = "Jump";
     [SerializeField] string horizontalCtrl = "Horizontal";
-    [SerializeField] string fireButton = "Fire1";
+    //[SerializeField] string meleeButton = "Fire1";
 
     private bool playerHit = false; //Turns true if the player got hit
     private int maxHealth = 4;
     public int currentHealth; // Public because of the HudScript
 
+    [SerializeField] Text countText;
+    private int itemsCount = 0;
+    
     void Start()
     {
         //anim = GetComponent<Animator>();
         //m_Sound = GetComponent<AudioSource>();
 
         currentHealth = maxHealth;
+        SetCountText();
     }
 
     void Update()
@@ -101,5 +100,24 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Dead");
         //SceneManager.LoadScene("DeathScreen");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Item")
+        {
+            itemsCount += 1;
+            SetCountText();
+            Destroy(collision.gameObject);
+        }
+    }
+
+    void SetCountText()
+    {
+        countText.text = "Points: " + itemsCount.ToString();
+        if (itemsCount >= 3)
+        {
+            Debug.Log("Yay");
+        }
     }
 }

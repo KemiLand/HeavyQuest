@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 7f34b25d712075f4db646e7009c59f62
-timeCreated: 1498811348
+guid: ab2360d031870084a97cc96b9ceb24d0
+timeCreated: 1500385221
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -12,6 +12,8 @@ TextureImporter:
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -27,20 +29,23 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
-    aniso: 1
-    mipBias: 0
-    wrapMode: 1
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 3
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 4
+  spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -52,7 +57,7 @@ TextureImporter:
   platformSettings:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -61,13 +66,8 @@ TextureImporter:
   spriteSheet:
     serializedVersion: 2
     sprites: []
-    outline:
-    - - {x: 0, y: 2}
-      - {x: 1.7320509, y: 0.99999994}
-      - {x: 1.7320508, y: -1.0000001}
-      - {x: -0.00000017484555, y: -2}
-      - {x: -1.7320509, y: -0.9999998}
-      - {x: -1.7320509, y: 0.9999998}
+    outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
