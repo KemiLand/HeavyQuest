@@ -34,6 +34,7 @@ public class EnemyScript : MonoBehaviour
     private float groundRadius = 0.01f;
 
     private bool facingRight = true;
+    public bool stunned = false;
 
     private PlayerController player;
 
@@ -131,10 +132,9 @@ public class EnemyScript : MonoBehaviour
         GetComponent<Animation>().Play("EnemyHit");
     }
 
-    void Die()
+    public void Die()
     {
         //Ajouter son de mort ennemi
-        velocity = 0.0f;
         //anim.SetBool("killed", true);
         Destroy(this.gameObject, timeToDie);
         gameObject.tag = "Dead";
@@ -146,5 +146,12 @@ public class EnemyScript : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
         facingRight = !facingRight;
+    }
+
+    public void GetStunned()
+    {
+        stunned = true;
+        velocity = 0f;
+        GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f);
     }
 }

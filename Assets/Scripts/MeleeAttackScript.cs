@@ -11,6 +11,12 @@ public class MeleeAttackScript : MonoBehaviour {
     private float attackCooldown = 0.5f;
 
     public Collider2D meleeTrigger;
+    private EnemyScript enemy;
+
+    private void Start()
+    {
+        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyScript>();
+    }
 
     void Awake()
     {
@@ -31,6 +37,16 @@ public class MeleeAttackScript : MonoBehaviour {
         {
             meleeTrigger.enabled = false;
         }
-        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if(enemy.stunned == true)
+            {
+                enemy.Die();
+            }
+        }
     }
 }
