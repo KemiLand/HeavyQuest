@@ -7,8 +7,8 @@ public class MeleeAttackScript : MonoBehaviour {
     private bool attacking = false;
     private bool punching = false;
 
-    private float attackTimer = 0.5f;
-    private float attackCooldown = 1f;
+    private float attackTimer = 0f;
+    private float attackCooldown = 0.5f;
 
     public Collider2D meleeTrigger;
 
@@ -21,21 +21,16 @@ public class MeleeAttackScript : MonoBehaviour {
     {
         punching = Input.GetButtonDown("Fire1");
 
-        if (punching == true && attacking == false)
+        if (punching && Time.time > attackTimer)
         {
-            attacking = true;            
-
-            meleeTrigger.enabled = true;            
+            attackTimer = Time.time + attackCooldown;
+                         
+            meleeTrigger.enabled = true;             
         }
-
-        if (attacking)
-        {            
-            attackCooldown -= Time.deltaTime;
-            if (attackCooldown <= 0f) //Can't spam the attack too much
-            {
-                attacking = false;
-                meleeTrigger.enabled = false;
-            }
-        }        
+        else
+        {
+            meleeTrigger.enabled = false;
+        }
+        
     }
 }
