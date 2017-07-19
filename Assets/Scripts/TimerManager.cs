@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class TimerManager : MonoBehaviour {
 
-    private float timeLeft = 90.0f;
+    private static float timeLeft = 90.0f;
     public bool stop = true;
 
     private float minutes;
@@ -66,7 +66,7 @@ public class TimerManager : MonoBehaviour {
         }
     }
 
-    void RestartTimer()
+    public static void RestartTimer()
     {
         timeLeft = 90.0f;
     }
