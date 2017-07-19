@@ -21,10 +21,15 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] string jumpButton = "Jump";
     [SerializeField] string horizontalCtrl = "Horizontal";
-    //[SerializeField] string meleeButton = "Fire1";
+    [SerializeField] string shootButton = "Fire3";
 
-    private bool playerHit = false; //Turns true if the player got hit
+    [SerializeField] GameObject leftBullet;
+    [SerializeField] GameObject rightBullet;
+    [SerializeField] Transform FirePosition;
+
+    private bool playerHit = false;
     private int maxHealth = 4;
+    private int ammoLeft;
     public int currentHealth; // Public because of the HudScript
 
     [SerializeField] Text countText;
@@ -46,6 +51,11 @@ public class PlayerController : MonoBehaviour
             //m_Sound.PlayOneShot(soundJump);
             //anim.SetBool("Ground", false);
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
+        }
+
+        if (Input.GetButtonDown(shootButton))
+        {
+            Fire();
         }
 
         if (currentHealth > maxHealth)
@@ -110,6 +120,12 @@ public class PlayerController : MonoBehaviour
             SetCountText();
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.tag == "Gun")
+        {
+            ammoLeft = 3;
+            Destroy(collision.gameObject);
+        }
     }
 
     void SetCountText()
@@ -118,6 +134,28 @@ public class PlayerController : MonoBehaviour
         if (itemsCount >= 3)
         {
             Debug.Log("Yay");
+        }
+    }
+
+    void Fire()
+    {
+        if(ammoLeft > 0)
+        {
+            if (facingRight)
+            {
+                Instantiate(rightBullet, FirePosition.position, Quaternion.identity);
+                ammoLeft -= 1;
+            }
+                
+            if (!facingRight)
+            {
+                Instantiate(leftBullet, FirePosition.position, Quaternion.identity);
+                ammoLeft -= 1;
+            }                
+        }        
+        else
+        {
+            Debug.Log("No ammo left");
         }
     }
 }
