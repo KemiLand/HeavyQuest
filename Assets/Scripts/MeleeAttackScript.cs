@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MeleeAttackScript : MonoBehaviour {
 
-    private bool attacking = false;
     private bool punching = false;
 
     private float attackTimer = 0f;

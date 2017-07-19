@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WhipAttackScript : MonoBehaviour {
 
-    private bool attacking = false;
     private bool whip = false;
 
     private float attackTimer = 0f;
