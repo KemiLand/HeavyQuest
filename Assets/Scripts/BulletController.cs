@@ -41,5 +41,10 @@ public class BulletController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Door"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

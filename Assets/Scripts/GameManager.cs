@@ -5,23 +5,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 
-    float timeToEnd = 2;
+    float timeToEnd = 2f;
+    
 
 	// Needs doors opening, and items disappearing
 	void Update ()
     {
         var ennemies = GameObject.FindWithTag("Enemy");
+        var doors = GameObject.FindWithTag("Door");
 
-        if(ennemies == null)
+        if(ennemies == null && doors != null)
         {
-            if(timeToEnd > 0)
-            {
-                timeToEnd -= Time.deltaTime;
-            }
-            else
-            {
-                Debug.Log("Ennemies are dead");
-            }
+            doors.SetActive(false);
         }
 	}
 

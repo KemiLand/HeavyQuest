@@ -11,10 +11,12 @@ public class WhipAttackScript : MonoBehaviour {
 
     public Collider2D whipTrigger;
     private EnemyScript enemy;
+    SpriteRenderer rend;
 
     private void Start()
     {
-        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyScript>();
+        //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyScript>();
+        rend = gameObject.GetComponent<SpriteRenderer>();
     }
 
     void Awake()
@@ -24,16 +26,19 @@ public class WhipAttackScript : MonoBehaviour {
 
     void Update()
     {
+        rend.enabled = false;
         whip = Input.GetButtonDown("Fire2");
 
         if (whip && Time.time > attackTimer)
         {
             attackTimer = Time.time + attackCooldown;
 
+            rend.enabled = true;
             whipTrigger.enabled = true;
         }
         else
         {
+            rend.enabled = false;
             whipTrigger.enabled = false;
         }
     }
@@ -42,6 +47,7 @@ public class WhipAttackScript : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            enemy = collision.gameObject.GetComponent<EnemyScript>();
             enemy.GetStunned();
         }
     }

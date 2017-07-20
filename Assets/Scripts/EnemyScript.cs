@@ -9,7 +9,7 @@ public class EnemyScript : MonoBehaviour
 {
     [SerializeField] int maxHealth = 5;
     [SerializeField] int currentHealth;
-    [SerializeField] float timeToDie = 0.8f;
+    [SerializeField] float timeToDie = 0f;
     private int enemyDamage = 2;
     private float velocity = 1f;
     private int playerHit = 0; // Preventing the monster to spam hits on the player
@@ -136,6 +136,7 @@ public class EnemyScript : MonoBehaviour
     {
         //Ajouter son de mort ennemi
         //anim.SetBool("killed", true);
+
         Destroy(this.gameObject, timeToDie);
         gameObject.tag = "Dead";
     }

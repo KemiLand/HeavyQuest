@@ -14,7 +14,7 @@ public class MeleeAttackScript : MonoBehaviour {
 
     private void Start()
     {
-        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyScript>();
+        //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyScript>();
     }
 
     void Awake()
@@ -42,8 +42,10 @@ public class MeleeAttackScript : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            if(enemy.stunned == true)
+            enemy = collision.gameObject.GetComponent<EnemyScript>();
+            if (enemy.stunned == true)
             {
+                
                 enemy.Die();
             }
         }
