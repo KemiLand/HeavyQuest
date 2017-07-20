@@ -30,7 +30,7 @@ public class TimerManager : MonoBehaviour {
 	void Start ()
     {
         startTimer(90.0f);
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()

@@ -137,7 +137,7 @@ public class EnemyScript : MonoBehaviour
         //Ajouter son de mort ennemi
         //anim.SetBool("killed", true);
 
-        Destroy(this.gameObject, timeToDie);
+        Destroy(this.gameObject);
         gameObject.tag = "Dead";
     }
 

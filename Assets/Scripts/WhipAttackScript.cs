@@ -5,11 +5,13 @@ using UnityEngine;
 public class WhipAttackScript : MonoBehaviour {
 
     private bool whip = false;
+    private bool punching = false;
 
     private float attackTimer = 0f;
     private float attackCooldown = 0.5f;
 
     public Collider2D whipTrigger;
+    public Collider2D meleeTrigger;
     private EnemyScript enemy;
     SpriteRenderer rend;
 
@@ -28,9 +30,11 @@ public class WhipAttackScript : MonoBehaviour {
     {
         rend.enabled = false;
         whip = Input.GetButtonDown("Fire2");
+        punching = Input.GetButtonDown("Fire1");
 
         if (whip && Time.time > attackTimer)
         {
+            Debug.Log("Whip");
             attackTimer = Time.time + attackCooldown;
 
             rend.enabled = true;
@@ -41,14 +45,35 @@ public class WhipAttackScript : MonoBehaviour {
             rend.enabled = false;
             whipTrigger.enabled = false;
         }
+        
+        if (punching && Time.time > attackTimer)
+        {
+            Debug.Log("Machette");
+            attackTimer = Time.time + attackCooldown;
+
+            meleeTrigger.enabled = true;
+            
+        }
+        else
+        {
+            meleeTrigger.enabled = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyClone")
         {
             enemy = collision.gameObject.GetComponent<EnemyScript>();
-            enemy.GetStunned();
+            if (enemy.stunned == true)
+            {
+                enemy.Die();
+            }
+            else
+            {
+                enemy.GetStunned();
+            }            
         }
     }
 }

@@ -24,7 +24,7 @@ public class MeleeAttackScript : MonoBehaviour {
 
     void Update()
     {
-        punching = Input.GetButtonDown("Fire1");
+        /*punching = Input.GetButtonDown("Fire1");
 
         if (punching && Time.time > attackTimer)
         {
@@ -35,17 +35,16 @@ public class MeleeAttackScript : MonoBehaviour {
         else
         {
             meleeTrigger.enabled = false;
-        }
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyClone")
         {
             enemy = collision.gameObject.GetComponent<EnemyScript>();
             if (enemy.stunned == true)
-            {
-                
+            {                
                 enemy.Die();
             }
         }
