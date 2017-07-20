@@ -46,7 +46,7 @@ public class PauseMenuScript : MonoBehaviour {
 
     public void MainMenu()
     {
-        //SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu");
         Paused = false;
     }
 
